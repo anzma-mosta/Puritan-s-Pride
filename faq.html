@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسئلة الشائعة | بيوريتانز برايد مصر</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f7f4',
+                            100: '#dbece3',
+                            200: '#bad9cb',
+                            300: '#8dbca6',
+                            400: '#5f9a80',
+                            500: '#064e3b',
+                            600: '#054232',
+                            700: '#043629',
+                            800: '#032a20',
+                            900: '#021e17',
+                        },
+                        secondary: '#1a1a1a',
+                        accent: '#c5a059',
+                        surface: '#fafaf9',
+                        sage: '#e2e8e0',
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans Arabic', 'Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'premium': '0 20px 60px -12px rgba(6, 78, 59, 0.08)',
+                        'gold': '0 20px 40px -10px rgba(197, 160, 89, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #064e3b 0%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #064e3b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #054232;
+        }
+
+        /* FAQ Accordion Transition */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 2rem;
+            opacity: 1;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            background: #c5a059;
+            color: white;
+        }
+        .faq-item.active {
+            border-color: #c5a059;
+            box-shadow: 0 20px 40px -10px rgba(197, 160, 89, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* Preloader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #064e3b;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .loader-content {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .7; transform: scale(0.95); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-secondary selection:bg-primary-100 selection:text-primary-900">
+
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-content flex flex-col items-center gap-6">
+            <div class="w-20 h-20 border-4 border-accent/20 border-t-accent rounded-full animate-spin"></div>
+            <div class="text-white font-bold tracking-[0.2em] text-sm">PURITAN'S PRIDE</div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-secondary text-white py-3 px-4 relative z-[60]">
+        <div class="max-w-7xl mx-auto flex justify-center items-center gap-4 text-xs md:text-sm font-bold tracking-wide">
+            <span class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                شحن مجاني للطلبات فوق 1000 ج.م
+            </span>
+            <span class="hidden md:block w-px h-4 bg-white/20"></span>
+            <span class="hidden md:block">كود الخصم: <span class="text-accent">HEALTH20</span></span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass-nav rounded-full px-8 py-4 flex justify-between items-center transition-all duration-500 shadow-soft border border-white/50">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white group-hover:rotate-12 transition-transform duration-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-primary-500">PURITAN'S <span class="text-secondary">PRIDE</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-10">
+            <a href="index.html" class="text-sm font-semibold text-primary-500 relative after:absolute after:bottom-[-4px] after:right-0 after:w-full after:h-[2px] after:bg-primary-500">الرئيسية</a>
+            <a href="products.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">المنتجات</a>
+            <a href="about.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">عن الشركة</a>
+            <a href="contact.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">تواصل معنا</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-4">
+            <button class="p-2 text-gray-500 hover:text-primary-500 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <a href="cart.html" class="p-2 text-gray-500 hover:text-primary-500 transition-colors relative">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                <span class="absolute top-1 right-1 bg-accent text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-primary-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-secondary/95 z-[70] translate-x-full transition-transform duration-700 md:hidden backdrop-blur-xl">
+        <div class="flex flex-col h-full p-10">
+            <div class="flex justify-between items-center mb-20">
+                <span class="text-2xl font-black text-white">PURITAN'S <span class="text-accent">PRIDE</span></span>
+                <button id="close-menu" class="p-4 bg-white/10 text-white rounded-full hover:rotate-90 transition-all duration-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-8">
+                <a href="index.html" class="text-4xl font-black text-white hover:text-accent transition-colors">الرئيسية</a>
+                <a href="products.html" class="text-4xl font-black text-white hover:text-accent transition-colors">المنتجات</a>
+                <a href="about.html" class="text-4xl font-black text-white hover:text-accent transition-colors">من نحن</a>
+                <a href="contact.html" class="text-4xl font-black text-white hover:text-accent transition-colors">اتصل بنا</a>
+            </div>
+            <div class="mt-auto pt-10 border-t border-white/10">
+                <p class="text-gray-400 mb-6 font-medium">تواصل معنا:</p>
+                <p class="text-white font-bold text-xl">+20 123 456 789</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-48 pb-32">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <span class="inline-block px-6 py-2 bg-primary-50 text-primary-500 text-xs font-black tracking-[0.2em] uppercase rounded-full mb-8">مركز المساعدة</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight text-secondary">
+                    الأسئلة <span class="text-gradient">الشائعة</span>
+                </h1>
+                <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    كل ما تحتاج لمعرفته حول منتجاتنا، الشحن، والخدمات لضمان تجربة تسوق استثنائية تليق بك.
+                </p>
+            </div>
+
+            <div class="grid gap-6" data-aos="fade-up" data-aos-delay="100">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item group bg-white rounded-[40px] border border-gray-100 transition-all duration-700 hover:border-primary-100">
+                    <button class="faq-toggle w-full p-8 md:p-10 text-right flex justify-between items-center outline-none">
+                        <span class="text-xl md:text-2xl font-black text-secondary group-hover:text-primary-500 transition-colors duration-500">هل منتجاتكم أصلية ومستوردة؟</span>
+                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-8 md:px-10">
+                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-gray-50 pt-8">
+                            نعم، جميع منتجاتنا أصلية 100% ويتم استيرادها مباشرة من شركة Puritan's Pride في الولايات المتحدة الأمريكية. نحن نضمن أعلى معايير الجودة والتخزين لضمان وصول المنتج إليك في أفضل حالة صحية ممكنة.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item group bg-white rounded-[40px] border border-gray-100 transition-all duration-700 hover:border-primary-100">
+                    <button class="faq-toggle w-full p-8 md:p-10 text-right flex justify-between items-center outline-none">
+                        <span class="text-xl md:text-2xl font-black text-secondary group-hover:text-primary-500 transition-colors duration-500">كم يستغرق الشحن داخل مصر؟</span>
+                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-8 md:px-10">
+                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-gray-50 pt-8">
+                            يستغرق الشحن داخل القاهرة والجيزة من 24 إلى 48 ساعة عمل. أما باقي المحافظات فتستغرق من 3 إلى 5 أيام عمل بحد أقصى. يتم التواصل معكم من قبل فريق الشحن قبل التسليم للتنسيق وضمان راحتكم.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item group bg-white rounded-[40px] border border-gray-100 transition-all duration-700 hover:border-primary-100">
+                    <button class="faq-toggle w-full p-8 md:p-10 text-right flex justify-between items-center outline-none">
+                        <span class="text-xl md:text-2xl font-black text-secondary group-hover:text-primary-500 transition-colors duration-500">هل يمكنني إرجاع المنتج؟</span>
+                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-8 md:px-10">
+                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-gray-50 pt-8">
+                            نعم، نؤمن بحقك في التغيير. يمكنك إرجاع المنتج خلال 14 يوماً من تاريخ الاستلام بشرط أن يكون في غلافه الأصلي المحكم ولم يتم فتحه أو استخدامه، وذلك التزاماً منا بمعايير السلامة العامة وسياسة حماية المستهلك.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item group bg-white rounded-[40px] border border-gray-100 transition-all duration-700 hover:border-primary-100">
+                    <button class="faq-toggle w-full p-8 md:p-10 text-right flex justify-between items-center outline-none">
+                        <span class="text-xl md:text-2xl font-black text-secondary group-hover:text-primary-500 transition-colors duration-500">كيف يمكنني تتبع طلبي؟</span>
+                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-8 md:px-10">
+                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-gray-50 pt-8">
+                            بمجرد خروج طلبك للشحن، ستتلقى رسالة نصية تحتوي على تفاصيل الشحنة ورقم التتبع الخاص بك، بالإضافة إلى رابط مباشر لمتابعة تحركاتها حتى تصل إلى باب منزلك.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-32 p-16 bg-primary-500 rounded-[60px] text-center relative overflow-hidden group shadow-premium" data-aos="zoom-in">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:scale-150 duration-1000"></div>
+                    <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl translate-x-1/2 translate-y-1/2 transition-transform group-hover:scale-150 duration-1000"></div>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-white tracking-tight">لم تجد إجابة لسؤالك؟</h3>
+                    <p class="text-primary-100 text-lg md:text-xl mb-12 max-w-lg mx-auto leading-relaxed">فريق الخبراء لدينا متواجد دائماً لمساعدتك في اختيار الأنسب لصحتك والإجابة على كل تساؤلاتك.</p>
+                    <a href="contact.html" class="inline-flex items-center justify-center px-12 py-5 bg-accent text-white font-bold rounded-full hover:bg-white hover:text-primary-500 transition-all duration-500 shadow-gold group">
+                        <span class="text-lg">تواصل مع خبير الآن</span>
+                        <svg class="w-6 h-6 mr-3 transform group-hover:-translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-secondary pt-32 pb-12 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+                <div class="space-y-8">
+                    <a href="index.html" class="block">
+                        <span class="text-3xl font-black text-white tracking-tighter">PURITAN'S <span class="text-primary-500">PRIDE</span></span>
+                    </a>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        الرائد الأول في تقديم المكملات الغذائية والفيتامينات الأصلية في مصر منذ أكثر من عقدين.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary-500 hover:border-primary-500 transition-all duration-500 group">
+                            <svg class="w-6 h-6 transform group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-primary-500 hover:border-primary-500 transition-all duration-500 group">
+                            <svg class="w-6 h-6 transform group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 grid grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <h4 class="text-white font-bold text-xl">تسوق</h4>
+                        <ul class="space-y-4">
+                            <li><a href="products.html" class="text-gray-400 hover:text-primary-500 transition-colors">جميع المنتجات</a></li>
+                            <li><a href="products.html?category=vitamins" class="text-gray-400 hover:text-primary-500 transition-colors">الفيتامينات</a></li>
+                            <li><a href="products.html?category=minerals" class="text-gray-400 hover:text-primary-500 transition-colors">المعادن</a></li>
+                            <li><a href="products.html?category=herbs" class="text-gray-400 hover:text-primary-500 transition-colors">الأعشاب</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-8">
+                        <h4 class="text-white font-bold text-xl">روابط سريعة</h4>
+                        <ul class="space-y-4">
+                            <li><a href="about.html" class="text-gray-400 hover:text-primary-500 transition-colors">من نحن</a></li>
+                            <li><a href="contact.html" class="text-gray-400 hover:text-primary-500 transition-colors">اتصل بنا</a></li>
+                            <li><a href="faq.html" class="text-gray-400 hover:text-primary-500 transition-colors">الأسئلة الشائعة</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <h4 class="text-white font-bold text-xl">اشترك في نشرتنا</h4>
+                    <p class="text-gray-400">احصل على آخر العروض والنصائح الصحية</p>
+                    <div class="relative group">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-all">
+                        <button class="absolute left-2 top-2 bottom-2 px-6 bg-primary-500 text-white font-bold rounded-xl hover:bg-primary-600 transition-colors">
+                            اشترك
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-500 text-sm">© 2026 Puritan's Pride Egypt. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">سياسة الخصوصية</a>
+                    <a href="#" class="text-gray-500 text-sm hover:text-white transition-colors">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic',
+            offset: 100
+        });
+
+        // Hide Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
+            }
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('nav:not(#mobile-menu)');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('top-4', 'shadow-premium');
+                nav.classList.remove('top-8');
+            } else {
+                nav.classList.remove('top-4', 'shadow-premium');
+                nav.classList.add('top-8');
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const toggle = item.querySelector('.faq-toggle');
+            toggle.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const openMenu = document.getElementById('mobile-menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (openMenu && closeMenu && mobileMenu) {
+            openMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // SweetAlert2 Configuration
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        // Search Interaction
+        const searchBtn = document.querySelector('nav button.p-2.text-gray-500');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => {
+                Toast.fire({
+                    icon: 'info',
+                    title: 'ميزة البحث ستتوفر قريباً',
+                    background: '#fafaf9',
+                    color: '#064e3b',
+                    iconColor: '#c5a059'
+                });
+            });
+        }
+
+        // Newsletter Interaction
+        const newsletterForm = document.querySelector('footer form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                if (emailInput.value) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'تم الاشتراك بنجاح',
+                        text: 'شكراً لانضمامك لنشرتنا البريدية',
+                        background: '#fafaf9',
+                        color: '#064e3b',
+                        iconColor: '#c5a059'
+                    });
+                    emailInput.value = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

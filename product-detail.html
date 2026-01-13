@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ميلاتونين 5 مجم - 60 كبسولة | Puritan's Pride Egypt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f7f4',
+                            100: '#dbece3',
+                            200: '#bad9cb',
+                            300: '#8dbca6',
+                            400: '#5f9a80',
+                            500: '#064e3b', // Deep Forest Green
+                            600: '#054232',
+                            700: '#043629',
+                            800: '#032a20',
+                            900: '#021e17',
+                        },
+                        secondary: '#1a1a1a', // Rich Black
+                        accent: '#c5a059', // Elegant Gold
+                        surface: '#fafaf9', // Warm White
+                        sage: '#e2e8e0',
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans Arabic', 'Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'premium': '0 20px 60px -12px rgba(6, 78, 59, 0.08)',
+                        'gold': '0 20px 40px -10px rgba(197, 160, 89, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #064e3b 0%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #064e3b;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #054232;
+        }
+        /* Preloader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #064e3b;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .loader-content {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .7; transform: scale(0.95); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-secondary selection:bg-primary-100 selection:text-primary-900">
+
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-content flex flex-col items-center gap-6">
+            <div class="text-4xl font-black text-white tracking-tighter">PURITAN'S <span class="text-accent">PRIDE</span></div>
+            <div class="w-48 h-1 bg-white/20 rounded-full overflow-hidden">
+                <div class="w-1/2 h-full bg-accent animate-[loading_1.5s_ease-in-out_infinite]"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
+
+    <!-- Announcement Bar -->
+    <div class="bg-secondary text-white py-3 px-4 relative z-[60] overflow-hidden">
+        <div class="max-w-7xl mx-auto flex justify-center items-center text-sm font-medium">
+            <div class="flex items-center gap-8 animate-pulse">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    شحن مجاني للطلبات فوق 1000 ج.م
+                </span>
+                <span class="hidden md:flex items-center gap-2">
+                    <span class="w-2 h-2 bg-accent rounded-full"></span>
+                    خصم 10% على أول طلب: <span class="text-accent font-bold">WELCOME10</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-500">
+        <div class="glass-nav rounded-full px-6 py-4 flex justify-between items-center shadow-premium">
+            <div class="flex items-center gap-12">
+                <a href="index.html" class="text-2xl font-black tracking-tighter text-primary-500">
+                    PURITAN'S <span class="text-secondary">PRIDE</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="text-sm font-bold hover:text-primary-500 transition-colors">الرئيسية</a>
+                    <a href="products.html" class="text-sm font-bold text-primary-500">المنتجات</a>
+                    <a href="about.html" class="text-sm font-bold hover:text-primary-500 transition-colors">من نحن</a>
+                    <a href="contact.html" class="text-sm font-bold hover:text-primary-500 transition-colors">اتصل بنا</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button class="p-3 hover:bg-primary-50 rounded-full transition-colors group">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </button>
+                <a href="cart.html" class="p-3 hover:bg-primary-50 rounded-full transition-colors relative group">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <span class="absolute top-2 right-2 w-4 h-4 bg-accent text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+                </a>
+                <a href="#" class="hidden md:block px-8 py-3 bg-secondary text-white text-sm font-bold rounded-full hover:bg-primary-500 transition-all shadow-lg hover:shadow-primary-500/20">
+                    حسابي
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden p-3 hover:bg-primary-50 rounded-full transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-surface z-[70] transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden overflow-y-auto">
+        <div class="p-8">
+            <div class="flex justify-between items-center mb-16">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-primary-500">PURITAN'S PRIDE</span>
+                </a>
+                <button id="close-menu" class="p-2 text-primary-500">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <nav class="space-y-8 text-right">
+                <a href="index.html" class="block text-4xl font-black text-secondary hover:text-primary-500 transition-colors">الرئيسية</a>
+                <a href="products.html" class="block text-4xl font-black text-primary-500">المنتجات</a>
+                <a href="about.html" class="block text-4xl font-black text-secondary hover:text-primary-500 transition-colors">عن الشركة</a>
+                <a href="contact.html" class="block text-4xl font-black text-secondary hover:text-primary-500 transition-colors">تواصل معنا</a>
+            </nav>
+            <div class="mt-20 text-right">
+                <a href="cart.html" class="inline-flex items-center gap-4 text-xl font-bold text-secondary">
+                    <span>سلة المشتريات</span>
+                    <span class="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center text-sm">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <main class="pt-48 pb-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Breadcrumbs -->
+            <nav class="flex mb-16 text-sm font-bold" data-aos="fade-up">
+                <ol class="flex items-center gap-3">
+                    <li><a href="index.html" class="text-gray-400 hover:text-primary-500 transition-colors">الرئيسية</a></li>
+                    <li class="text-gray-300">/</li>
+                    <li><a href="products.html" class="text-gray-400 hover:text-primary-500 transition-colors">المنتجات</a></li>
+                    <li class="text-gray-300">/</li>
+                    <li class="text-primary-500">ميلاتونين 5 مجم</li>
+                </ol>
+            </nav>
+
+            <div class="grid lg:grid-cols-2 gap-24 items-start">
+                <!-- Image Gallery -->
+                <div class="space-y-8" data-aos="fade-left">
+                    <div class="group relative aspect-[4/5] bg-white rounded-[40px] shadow-premium flex items-center justify-center overflow-hidden border border-sage">
+                        <img src="https://images.unsplash.com/photo-1550572017-4f1b2ecd88f9?q=80&w=800&auto=format&fit=crop" alt="Melatonin Supplement Bottle" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000">
+                        <div class="absolute top-8 right-8">
+                            <span class="bg-accent text-white px-6 py-2 rounded-full font-black text-sm shadow-gold">خصم 20%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-4 gap-6">
+                        <button class="aspect-square bg-white rounded-3xl border-2 border-primary-500 overflow-hidden shadow-soft transition-transform hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1550572017-4f1b2ecd88f9?q=80&w=200&auto=format&fit=crop" alt="Melatonin Supplement Bottle Front View" class="w-full h-full object-cover">
+                        </button>
+                        <button class="aspect-square bg-white rounded-3xl border border-sage overflow-hidden hover:border-primary-200 transition-all hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1576073719710-aa1e60f06530?q=80&w=200&auto=format&fit=crop" alt="Melatonin Supplement Bottle Side View" class="w-full h-full object-cover">
+                        </button>
+                        <button class="aspect-square bg-white rounded-3xl border border-sage overflow-hidden hover:border-primary-200 transition-all hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=200&auto=format&fit=crop" alt="Melatonin Capsules Detail View" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="space-y-12" data-aos="fade-right">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-6">
+                            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-500 text-xs font-black uppercase tracking-wider">
+                                <span class="w-2 h-2 rounded-full bg-primary-500 animate-ping"></span>
+                                متوفر الآن
+                            </span>
+                            <span class="text-sm text-gray-400 font-bold tracking-widest uppercase">SKU: PR-MEL-005</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-black text-secondary leading-[1.1] tracking-tighter">
+                            ميلاتونين <span class="text-gradient">5 مجم</span>
+                        </h1>
+                        <div class="flex items-center gap-8">
+                            <div class="flex items-center gap-1 text-accent">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <svg class="w-5 h-5 fill-current opacity-30" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            </div>
+                            <span class="text-sm text-gray-500 font-bold">(48 مراجعة حقيقية)</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-10 p-10 bg-white rounded-[40px] shadow-soft border border-sage">
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-400 font-black uppercase tracking-widest mb-2">السعر الحالي</span>
+                            <span class="text-5xl font-black text-secondary">450 <span class="text-xl font-bold">ج.م</span></span>
+                        </div>
+                        <div class="h-16 w-px bg-sage"></div>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-gray-400 font-black uppercase tracking-widest mb-2">السعر الأصلي</span>
+                            <span class="text-2xl font-bold text-gray-300 line-through">550 ج.م</span>
+                        </div>
+                        <div class="mr-auto">
+                            <p class="px-2 py-3 bg-red-50  text-red-600 rounded-2xl font-black text-sm border border-red-100 shadow-sm">وفر 100 ج.م</p>
+                        </div>
+                    </div>
+
+                    <p class="text-xl text-gray-500 leading-relaxed font-medium">
+                        يساعد الميلاتونين على تنظيم دورة النوم الطبيعية في الجسم. مثالي لمن يعانون من الأرق أو اضطرابات النوم الناتجة عن السفر. كبسولات سهلة البلع سريعة الامتصاص.
+                    </p>
+
+                    <div class="space-y-8 pt-6">
+                        <div class="flex items-center gap-10">
+                            <span class="font-black text-secondary uppercase tracking-wider">الكمية:</span>
+                            <div class="flex items-center bg-white border border-sage rounded-2xl p-2 shadow-sm">
+                                <button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-primary-50 transition-colors text-2xl font-black">-</button>
+                                <input type="number" value="1" class="w-20 text-center focus:outline-none font-black text-xl bg-transparent">
+                                <button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-primary-50 transition-colors text-2xl font-black">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <button class="flex-[2] py-6 bg-primary-500 text-white font-black text-xl rounded-[32px] hover:bg-secondary transition-all shadow-premium hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-4 group">
+                                <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                أضف إلى السلة
+                            </button>
+                            <button class="flex-1 py-6 bg-white border border-sage text-secondary font-black rounded-[32px] hover:bg-red-50 hover:text-red-500 hover:border-red-100 transition-all shadow-soft active:scale-95 flex items-center justify-center gap-4 group">
+                                <svg class="w-6 h-6 group-hover:fill-current transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-2 gap-8 pt-12 border-t border-sage">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-primary-50 rounded-[24px] flex items-center justify-center text-primary-500 group-hover:bg-primary-500 group-hover:text-white transition-all duration-700 shadow-soft">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-secondary tracking-tight">أصلي 100%</h4>
+                                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">ضمان استرجاع</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-accent/10 rounded-[24px] flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-700 shadow-soft">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-secondary tracking-tight">شحن سريع</h4>
+                                <p class="text-xs text-gray-400">خلال 24-48 ساعة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="mt-32 pt-20 border-t border-gray-100">
+                <div class="flex flex-wrap gap-4 md:gap-8 mb-16 border-b border-gray-100" data-aos="fade-up">
+                    <button class="tab-btn pb-6 border-b-4 border-primary-500 font-black text-primary-500 text-lg transition-all relative" data-tab="description">
+                        <span>وصف المنتج</span>
+                    </button>
+                    <button class="tab-btn pb-6 border-b-4 border-transparent font-black text-gray-400 text-lg hover:text-secondary transition-all" data-tab="usage">طريقة الاستخدام</button>
+                    <button class="tab-btn pb-6 border-b-4 border-transparent font-black text-gray-400 text-lg hover:text-secondary transition-all" data-tab="warnings">التحذيرات</button>
+                    <button class="tab-btn pb-6 border-b-4 border-transparent font-black text-gray-400 text-lg hover:text-secondary transition-all" data-tab="reviews">المراجعات (48)</button>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-20">
+                    <div class="lg:col-span-2 space-y-12" data-aos="fade-up">
+                        <!-- Description Tab -->
+                        <div id="description" class="tab-content prose prose-lg max-w-none text-gray-500 leading-relaxed">
+                            <p class="text-xl mb-8 font-medium">الميلاتونين هو هرمون يفرزه الجسم بشكل طبيعي ليعلم العقل بأن وقت النوم قد حان. مع تقدم العمر أو نتيجة التوتر، قد يقل إفراز هذا الهرمون مما يسبب صعوبة في النوم.</p>
+                            <h3 class="text-2xl font-black text-secondary mb-6">المميزات والفوائد:</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-start gap-4">
+                                    <div class="w-6 h-6 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 mt-1 flex-shrink-0">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="font-medium">يدعم جودة النوم ويقلل وقت الاستغراق في النوم بشكل ملحوظ.</span>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <div class="w-6 h-6 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 mt-1 flex-shrink-0">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="font-medium">يساعد في علاج اضطرابات النوم الناتجة عن السفر (Jet Lag).</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Usage Tab (Hidden by default) -->
+                        <div id="usage" class="tab-content hidden prose prose-lg max-w-none text-gray-500 leading-relaxed">
+                            <h3 class="text-2xl font-black text-secondary mb-6">كيفية الاستخدام:</h3>
+                            <p class="text-lg mb-6">للبالغين، تناول كبسولة واحدة (1) يومياً قبل النوم بـ 30 دقيقة. لا تتجاوز الجرعة المقررة.</p>
+                        </div>
+
+                        <!-- Warnings Tab (Hidden by default) -->
+                        <div id="warnings" class="tab-content hidden prose prose-lg max-w-none text-gray-500 leading-relaxed">
+                            <h3 class="text-2xl font-black text-secondary mb-6">تحذيرات هامة:</h3>
+                            <p class="text-lg mb-6 text-red-500 font-bold">هذا المنتج غير مخصص للحوامل أو المرضعات. إذا كنت تتناول أي أدوية، استشر طبيبك قبل الاستخدام.</p>
+                        </div>
+
+                        <!-- Reviews Tab (Hidden by default) -->
+                        <div id="reviews" class="tab-content hidden space-y-8">
+                            <div class="p-8 bg-white rounded-3xl border border-sage shadow-soft">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-black text-secondary">أحمد محمد</h4>
+                                        <div class="flex text-accent">★★★★★</div>
+                                    </div>
+                                    <span class="text-sm text-gray-400">منذ يومين</span>
+                                </div>
+                                <p class="text-gray-500">منتج رائع جداً وساعدني في تنظيم نومي بشكل كبير. الشحن كان سريع جداً.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sidebar Info -->
+                    <div class="space-y-8" data-aos="fade-up">
+                        <div class="bg-secondary rounded-[40px] p-8 text-white">
+                            <h4 class="text-xl font-bold mb-6">لماذا تختارنا؟</h4>
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-medium">منتجات مستوردة أصلية 100%</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-medium">أفضل سعر في مصر</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-medium">دعم فني واستشارات طبية</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white pt-32 pb-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-20 mb-20">
+                <div class="md:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2 mb-8">
+                        <div class="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <span class="text-3xl font-bold tracking-tight text-white">PURITAN'S <span class="text-primary-500">PRIDE</span></span>
+                    </a>
+                    <p class="text-gray-400 text-lg leading-relaxed max-w-md">نحن نؤمن بأن الصحة هي التوازن الحقيقي. ملتزمون بتقديم أنقى المكملات الغذائية العالمية لعملائنا في مصر منذ عام 2026.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-8">روابط سريعة</h4>
+                    <ul class="space-y-6 text-gray-400">
+                        <li><a href="products.html" class="hover:text-primary-500 transition-colors">جميع المنتجات</a></li>
+                        <li><a href="about.html" class="hover:text-primary-500 transition-colors">عن الشركة</a></li>
+                        <li><a href="contact.html" class="hover:text-primary-500 transition-colors">تواصل معنا</a></li>
+                        <li><a href="faq.html" class="hover:text-primary-500 transition-colors">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-8">تواصل معنا</h4>
+                    <div class="space-y-6 text-gray-400">
+                        <p class="flex items-center gap-4"><svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> info@puritanspride.com.eg</p>
+                        <p class="flex items-center gap-4"><svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> +20 123 456 789</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-500 text-sm">© 2026 Puritan's Pride Egypt. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="text-gray-500 hover:text-primary-500 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="#" class="text-gray-500 hover:text-primary-500 transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic',
+            offset: 100
+        });
+
+        // Hide Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('nav:not(#mobile-menu)');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('top-4', 'shadow-premium');
+                nav.classList.remove('top-8');
+            } else {
+                nav.classList.remove('top-4', 'shadow-premium');
+                nav.classList.add('top-8');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const openMenu = document.getElementById('mobile-menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (openMenu && closeMenu && mobileMenu) {
+            openMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        }
+
+        // Quantity Controls
+        const quantityContainer = document.querySelector('.flex.items-center.bg-white.border.border-sage.rounded-2xl');
+        if (quantityContainer) {
+            const minusBtn = quantityContainer.querySelector('button:first-child');
+            const plusBtn = quantityContainer.querySelector('button:last-child');
+            const qtyInput = quantityContainer.querySelector('input');
+
+            if (minusBtn && plusBtn && qtyInput) {
+                minusBtn.addEventListener('click', () => {
+                    const val = parseInt(qtyInput.value);
+                    if (val > 1) qtyInput.value = val - 1;
+                });
+                plusBtn.addEventListener('click', () => {
+                    const val = parseInt(qtyInput.value);
+                    qtyInput.value = val + 1;
+                });
+            }
+        }
+
+        // Image Gallery
+        const mainImg = document.querySelector('.group.relative.aspect-\\[4\\/5\\] img');
+        const thumbnails = document.querySelectorAll('.grid.grid-cols-4 button img');
+
+        thumbnails.forEach(thumb => {
+            thumb.parentElement.addEventListener('click', () => {
+                mainImg.src = thumb.src.replace('w=200', 'w=800');
+                thumbnails.forEach(t => t.parentElement.classList.remove('border-primary-500'));
+                thumbnails.forEach(t => t.parentElement.classList.add('border-sage'));
+                thumb.parentElement.classList.remove('border-sage');
+                thumb.parentElement.classList.add('border-primary-500');
+            });
+        });
+
+        // Tabs Switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-tab');
+                
+                // Update buttons
+                tabBtns.forEach(b => {
+                    b.classList.remove('border-primary-500', 'text-primary-500');
+                    b.classList.add('border-transparent', 'text-gray-400');
+                });
+                btn.classList.remove('border-transparent', 'text-gray-400');
+                btn.classList.add('border-primary-500', 'text-primary-500');
+
+                // Update contents
+                tabContents.forEach(content => {
+                    if (content.id === target) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
+        // SweetAlert2 Configuration
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        // Add to Cart Interaction
+        const addToCartBtn = document.querySelector('button.bg-primary-500.text-white.font-black');
+        if (addToCartBtn) {
+            addToCartBtn.addEventListener('click', () => {
+                const productTitle = document.querySelector('h1').textContent.trim();
+                const quantity = document.querySelector('input[type="number"]').value;
+                Toast.fire({
+                    icon: 'success',
+                    title: 'تمت الإضافة للسلة',
+                    text: `${productTitle} (الكمية: ${quantity})`,
+                    background: '#fafaf9',
+                    color: '#064e3b',
+                    iconColor: '#c5a059'
+                });
+            });
+        }
+
+        // Wishlist Interaction
+        const wishlistBtn = document.querySelector('button.bg-white.border.border-sage.text-secondary');
+        if (wishlistBtn) {
+            wishlistBtn.addEventListener('click', () => {
+                const productTitle = document.querySelector('h1').textContent.trim();
+                const isActive = wishlistBtn.classList.contains('text-red-500');
+                
+                if (isActive) {
+                    wishlistBtn.classList.remove('text-red-500', 'border-red-100', 'bg-red-50');
+                    wishlistBtn.classList.add('text-secondary', 'border-sage', 'bg-white');
+                    Toast.fire({
+                        icon: 'info',
+                        title: 'تمت الإزالة من المفضلة',
+                        text: productTitle,
+                        background: '#fafaf9',
+                        color: '#064e3b',
+                        iconColor: '#c5a059'
+                    });
+                } else {
+                    wishlistBtn.classList.add('text-red-500', 'border-red-100', 'bg-red-50');
+                    wishlistBtn.classList.remove('text-secondary', 'border-sage', 'bg-white');
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'تمت الإضافة للمفضلة',
+                        text: productTitle,
+                        background: '#fafaf9',
+                        color: '#064e3b',
+                        iconColor: '#c5a059'
+                    });
+                }
+            });
+        }
+        // Search Interaction
+        const searchBtn = document.querySelector('nav button.p-2.text-gray-500');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => {
+                Toast.fire({
+                    icon: 'info',
+                    title: 'ميزة البحث ستتوفر قريباً',
+                    background: '#fafaf9',
+                    color: '#064e3b',
+                    iconColor: '#c5a059'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
