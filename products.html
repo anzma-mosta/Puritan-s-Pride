@@ -70,6 +70,28 @@
             background: linear-gradient(to top, rgba(6, 78, 59, 0.9) 0%, transparent 100%);
         }
 
+        /* Mobile Menu Enhancements */
+        .mobile-menu-link {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #mobile-menu.active .mobile-menu-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .glass-nav-mobile {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        .bottom-nav-link.active {
+            color: #064e3b;
+        }
+        .bottom-nav-link.active .icon-bg {
+            background-color: #f0f7f4;
+            transform: translateY(-5px);
+        }
+
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 20px;
