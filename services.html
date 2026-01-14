@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدماتنا | Puritan's Pride Egypt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9f6',
+                            100: '#d1e9e0',
+                            200: '#a3d3c1',
+                            300: '#75bda2',
+                            400: '#47a783',
+                            500: '#064e3b', // Deep Forest Green
+                            600: '#054232',
+                            700: '#043629',
+                            800: '#032a20',
+                            900: '#021e17',
+                        },
+                        secondary: '#0f172a', // Sophisticated Slate
+                        accent: {
+                            DEFAULT: '#c5a059', // Elegant Gold
+                            light: '#dfc08d',
+                            dark: '#a38446',
+                        },
+                        surface: '#fafaf9',
+                        sage: '#e2e8e0',
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans Arabic', 'Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'premium': '0 20px 60px -12px rgba(6, 78, 59, 0.08)',
+                        'gold-glow': '0 15px 35px -5px rgba(197, 160, 89, 0.2)',
+                        'inner-light': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.06)',
+                    },
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shine': 'shine 2s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shine: {
+                            '100%': { left: '125%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #fafaf9;
+            color: #0f172a;
+        }
+        
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fafaf9; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(to bottom, #064e3b, #c5a059);
+            border-radius: 20px;
+        }
+
+        .glass-nav {
+            background: rgba(250, 250, 249, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #064e3b 0%, #c5a059 50%, #064e3b 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine-text 5s linear infinite;
+        }
+
+        @keyframes shine-text {
+            to { background-position: 200% center; }
+        }
+
+        .premium-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -15px rgba(6, 78, 59, 0.1);
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+
+        .btn-shine:hover::after {
+            left: 120%;
+        }
+
+        /* Arabic Typography Optimization */
+        h1, h2, h3, h4 {
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body class="text-secondary selection:bg-primary-100 selection:text-primary-900">
+
+    <!-- Preloader -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-surface flex items-center justify-center transition-opacity duration-700">
+        <div class="flex flex-col items-center gap-6">
+            <div class="w-16 h-16 border-2 border-primary-50 border-t-primary-500 rounded-full animate-spin"></div>
+            <span class="text-xs font-bold tracking-[0.3em] text-primary-500 uppercase">Pure & Original</span>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-primary-500 text-white py-2 text-center text-[11px] font-bold tracking-widest uppercase relative z-[60]">
+        شحن مجاني للطلبات فوق 1000 ج.م • كود الخصم: PURE2026
+    </div>
+
+    <!-- Header / Navbar -->
+    <nav class="fixed top-8 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass-nav rounded-[2rem] px-8 py-4 flex justify-between items-center transition-all duration-500 shadow-soft border border-white/40">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+            <div class="relative w-12 h-12 bg-primary-500 rounded-2xl flex items-center justify-center text-white group-hover:rotate-[10deg] transition-all duration-500 shadow-premium">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <div class="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full border-2 border-white animate-pulse"></div>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-xl font-black tracking-tight text-primary-500 uppercase leading-none">Puritan's <span class="text-secondary">Pride</span></span>
+                <span class="text-[10px] font-bold text-gray-400 tracking-[0.3em] uppercase">Egypt Official</span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-2 bg-white/50 p-1.5 rounded-2xl border border-gray-100/50">
+            <a href="index.html" class="px-6 py-2.5 text-sm font-bold text-gray-500 hover:text-primary-500 hover:bg-white rounded-xl transition-all">الرئيسية</a>
+            <a href="products.html" class="px-6 py-2.5 text-sm font-bold text-gray-500 hover:text-primary-500 hover:bg-white rounded-xl transition-all">المنتجات</a>
+            <a href="services.html" class="px-6 py-2.5 text-sm font-bold text-white bg-primary-500 rounded-xl shadow-premium">الخدمات</a>
+            <a href="about.html" class="px-6 py-2.5 text-sm font-bold text-gray-500 hover:text-primary-500 hover:bg-white rounded-xl transition-all">قصتنا</a>
+            <a href="contact.html" class="px-6 py-2.5 text-sm font-bold text-gray-500 hover:text-primary-500 hover:bg-white rounded-xl transition-all">تواصل معنا</a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-3">
+            <button class="hidden sm:flex w-11 h-11 items-center justify-center text-gray-500 hover:text-primary-500 hover:bg-white rounded-xl transition-all border border-transparent hover:border-gray-100">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <a href="cart.html" class="w-11 h-11 flex items-center justify-center text-gray-500 hover:text-primary-500 hover:bg-white rounded-xl transition-all border border-transparent hover:border-gray-100 relative group">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                <span class="absolute top-2 right-2 bg-accent text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-gold-glow group-hover:scale-110 transition-transform">0</span>
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden w-11 h-11 flex items-center justify-center text-primary-500 bg-primary-50 rounded-xl transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] invisible transition-all duration-500">
+        <div id="mobile-menu-backdrop" class="absolute inset-0 bg-secondary/60 backdrop-blur-xl opacity-0 transition-opacity duration-500"></div>
+        <div class="absolute top-0 right-0 w-[85%] h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-500 ease-out flex flex-col overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none opacity-20">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/30 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent/30 rounded-full blur-3xl -ml-32 -mb-32"></div>
+            </div>
+            <div class="p-8 flex justify-between items-center border-b border-gray-100 relative z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center text-white rotate-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <span class="text-xl font-bold text-secondary tracking-tight">PURITAN'S <span class="text-primary-500">PRIDE</span></span>
+                </div>
+                <button id="close-menu" class="w-12 h-12 flex items-center justify-center text-secondary hover:bg-gray-100 rounded-2xl transition-all active:scale-90">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <nav class="flex-1 px-8 py-12 flex flex-col gap-8 text-right relative z-10">
+                <a href="index.html" class="mobile-menu-link text-3xl font-bold text-secondary">الرئيسية</a>
+                <a href="products.html" class="mobile-menu-link text-3xl font-bold text-secondary">المنتجات</a>
+                <a href="services.html" class="mobile-menu-link text-3xl font-bold text-primary-500">الخدمات</a>
+                <a href="about.html" class="mobile-menu-link text-3xl font-bold text-secondary">قصتنا</a>
+                <a href="contact.html" class="mobile-menu-link text-3xl font-bold text-secondary">تواصل معنا</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Fixed Mobile Bottom Navigation -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md bg-white/90 backdrop-blur-2xl z-50 rounded-[2.5rem] shadow-premium border border-white/50 flex justify-around items-center p-3 md:hidden">
+        <a href="index.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">الرئيسية</span>
+        </a>
+        <a href="products.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">المنتجات</span>
+        </a>
+        <a href="cart.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90 relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="absolute top-2 right-2 bg-accent text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+            </div>
+            <span class="text-[10px] font-bold">السلة</span>
+        </a>
+        <button id="mobile-menu-trigger" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">القائمة</span>
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-48 pb-32 overflow-hidden relative min-h-screen">
+        <!-- Artistic Background Blobs -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-500/5 rounded-full blur-[120px] -mr-96 -mt-96 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] -ml-48 -mb-48 animate-blob" style="animation-delay: 5s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <!-- Page Header -->
+            <div class="text-center mb-32" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full text-primary-500 text-xs font-bold tracking-widest uppercase mb-8 border border-primary-100 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+                    </span>
+                    نحن نهتم بتفاصيل صحتك
+                </div>
+                <h1 class="text-5xl md:text-8xl font-black text-secondary mb-8 leading-[1.1]">
+                    خدمات <span class="text-gradient">استثنائية</span> <br>
+                    لحياة أفضل
+                </h1>
+                <p class="text-gray-500 text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                    نحن لا نقدم مجرد مكملات غذائية، بل نقدم نظاماً متكاملاً لحياة صحية أفضل من خلال خدماتنا المتخصصة والمبتكرة.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Service 1: Professional Consultation -->
+                <div class="premium-card bg-white p-12 rounded-[3.5rem] border border-gray-100 relative group overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-bl-[100px] -mr-8 -mt-8 group-hover:bg-primary-500/10 transition-colors"></div>
+                    <div class="w-24 h-24 bg-primary-50 rounded-3xl flex items-center justify-center text-primary-500 mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-soft">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-black text-secondary mb-6">استشارات غذائية ذكية</h3>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-10 font-medium">فريق من الخبراء يساعدك في اختيار المكملات الأنسب لنمط حياتك وأهدافك الصحية بدقة متناهية وبناء خطة مخصصة لك.</p>
+                    <a href="#" class="inline-flex items-center gap-3 text-primary-500 font-bold group/link text-lg">
+                        <span>اكتشف المزيد</span>
+                        <svg class="w-6 h-6 group-hover:translate-x-[-5px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Service 2: Fast Delivery -->
+                <div class="premium-card bg-white p-12 rounded-[3.5rem] border border-gray-100 relative group overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-[100px] -mr-8 -mt-8 group-hover:bg-accent/10 transition-colors"></div>
+                    <div class="w-24 h-24 bg-accent/10 rounded-3xl flex items-center justify-center text-accent mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-soft">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-black text-secondary mb-6">توصيل بريميوم</h3>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-10 font-medium">نضمن وصول منتجاتك في أسرع وقت ممكن (48 ساعة كحد أقصى) مع الحفاظ على معايير التخزين والجودة العالمية خلال الرحلة.</p>
+                    <a href="#" class="inline-flex items-center gap-3 text-primary-500 font-bold group/link text-lg">
+                        <span>تتبع طلبك</span>
+                        <svg class="w-6 h-6 group-hover:translate-x-[-5px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Service 3: Authenticity Guarantee -->
+                <div class="premium-card bg-white p-12 rounded-[3.5rem] border border-gray-100 relative group overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary-500/10 rounded-bl-[100px] -mr-8 -mt-8 group-hover:bg-primary-500/20 transition-colors"></div>
+                    <div class="w-24 h-24 bg-primary-500 rounded-3xl flex items-center justify-center text-white mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-premium">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-3xl font-black text-secondary mb-6">ضمان الأصالة المطلق</h3>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-10 font-medium">جميع منتجاتنا مستوردة مباشرة من الوكيل المعتمد، مع إمكانية التحقق من كود الأصالة لضمان حصولك على الجودة الحقيقية.</p>
+                    <a href="#" class="inline-flex items-center gap-3 text-primary-500 font-bold group/link text-lg">
+                        <span>سياسة الجودة</span>
+                        <svg class="w-6 h-6 group-hover:translate-x-[-5px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Enhanced CTA Solution -->
+            <div class="mt-40 bg-secondary rounded-[4rem] p-12 md:p-24 relative overflow-hidden group shadow-2xl" data-aos="zoom-in">
+                <div class="absolute inset-0 opacity-20 pointer-events-none transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500 rounded-full blur-[150px] -mr-64 -mt-64"></div>
+                    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent rounded-full blur-[150px] -ml-64 -mb-64"></div>
+                </div>
+                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+                    <div class="text-right max-w-2xl">
+                        <div class="inline-block px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-primary-400 text-xs font-bold tracking-widest uppercase mb-8 border border-white/10">برنامج الرعاية المتكاملة</div>
+                        <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">هل تبحث عن خطة <br> <span class="text-primary-400">صحية مخصصة؟</span></h2>
+                        <p class="text-gray-300 text-xl leading-relaxed font-medium">تحدث مع أحد خبرائنا الآن واحصل على تقييم مجاني لاحتياجاتك الغذائية وبناء خطة متكاملة تناسب أهدافك تماماً وتضمن لك حياة أكثر حيوية.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-8 shrink-0 w-full lg:w-auto">
+                        <button class="btn-shine px-12 py-6 bg-primary-500 text-white font-bold rounded-[2rem] shadow-premium hover:scale-105 transition-all text-lg w-full sm:w-auto">احجز استشارة مجانية</button>
+                        <button class="px-12 py-6 bg-white/5 border border-white/10 text-white font-bold rounded-[2rem] hover:bg-white/10 transition-all text-lg w-full sm:w-auto">تحدث معنا الآن</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Same as Index) -->
+    <footer class="bg-secondary text-white pt-32 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500 rounded-full blur-[120px] -mr-48 -mt-48"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent rounded-full blur-[120px] -ml-48 -mb-48"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+                <div class="md:col-span-4">
+                    <a href="index.html" class="flex items-center gap-3 mb-8 group">
+                        <div class="w-14 h-14 bg-primary-500 rounded-2xl flex items-center justify-center text-white rotate-3 group-hover:rotate-0 transition-transform duration-500 shadow-gold-glow">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <span class="text-3xl font-bold tracking-tight text-white">PURITAN'S <span class="text-primary-500">PRIDE</span></span>
+                    </a>
+                    <p class="text-gray-400 leading-relaxed mb-8">نحن نؤمن أن الصحة هي أغلى ما تملك، لذلك نسعى جاهدين لتوفير أفضل المكملات الغذائية العالمية لتعزيز جودة حياتك.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="text-xl font-bold mb-8 relative inline-block">روابط سريعة <span class="absolute -bottom-2 right-0 w-12 h-1 bg-primary-500 rounded-full"></span></h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary-500 transition-colors">الرئيسية</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-primary-500 transition-colors">المنتجات</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-primary-500 transition-colors">خدماتنا</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary-500 transition-colors">من نحن</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-3">
+                    <h4 class="text-xl font-bold mb-8 relative inline-block">النشرة البريدية <span class="absolute -bottom-2 right-0 w-12 h-1 bg-primary-500 rounded-full"></span></h4>
+                    <p class="text-gray-400 text-sm mb-6">اشترك للحصول على آخر العروض والنصائح الصحية الحصرية.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 text-white focus:outline-none focus:border-primary-500 transition-all">
+                        <button class="w-full py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-xl shadow-gold-glow transition-all active:scale-95">اشترك الآن</button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:row items-center justify-between gap-6">
+                <p class="text-gray-500 text-sm">© 2026 Puritan's Pride Egypt. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // AOS Initialization
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 700);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+        const menuContent = mobileMenu.querySelector('div:last-child');
+
+        function openMenu() {
+            mobileMenu.classList.remove('invisible');
+            setTimeout(() => {
+                mobileMenuBackdrop.style.opacity = '1';
+                menuContent.style.transform = 'translateX(0)';
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuContent.style.transform = 'translateX(100%)';
+            mobileMenuBackdrop.style.opacity = '0';
+            setTimeout(() => mobileMenu.classList.add('invisible'), 500);
+            document.body.style.overflow = 'auto';
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+        if (mobileMenuTrigger) mobileMenuTrigger.addEventListener('click', openMenu);
+        if (closeMenuBtn) closeMenuBtn.addEventListener('click', closeMenu);
+        if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', closeMenu);
+    </script>
+</body>
+</html>

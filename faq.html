@@ -144,7 +144,12 @@
         }
     </style>
 </head>
-<body class="bg-surface text-secondary selection:bg-primary-100 selection:text-primary-900">
+<body class="bg-surface text-secondary selection:bg-primary-100 selection:text-primary-900 relative overflow-x-hidden">
+
+    <!-- Artistic Background Blobs -->
+    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-0 -translate-x-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-100/10 rounded-full blur-[150px] pointer-events-none"></div>
 
     <!-- Preloader -->
     <div id="loader">
@@ -178,8 +183,9 @@
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-10">
-            <a href="index.html" class="text-sm font-semibold text-primary-500 relative after:absolute after:bottom-[-4px] after:right-0 after:w-full after:h-[2px] after:bg-primary-500">الرئيسية</a>
+            <a href="index.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">الرئيسية</a>
             <a href="products.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">المنتجات</a>
+            <a href="services.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">الخدمات</a>
             <a href="about.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">عن الشركة</a>
             <a href="contact.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">تواصل معنا</a>
         </div>
@@ -222,6 +228,7 @@
                 <nav class="space-y-6">
                     <a href="index.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">الرئيسية</a>
                     <a href="products.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">المنتجات</a>
+                    <a href="services.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">الخدمات</a>
                     <a href="about.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">عن الشركة</a>
                     <a href="contact.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">تواصل معنا</a>
                     <a href="faq.html" class="menu-item block text-3xl font-bold text-primary-500">الأسئلة الشائعة</a>
@@ -238,30 +245,36 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Bottom Navigation for Mobile Menu -->
-            <div class="p-8 border-t border-gray-100 bg-gray-50/50">
-                <div class="flex justify-around items-center">
-                    <a href="index.html" class="bottom-nav-item flex flex-col items-center gap-1 text-gray-400">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">الرئيسية</span>
-                    </a>
-                    <a href="products.html" class="bottom-nav-item flex flex-col items-center gap-1 text-gray-400">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">المتجر</span>
-                    </a>
-                    <a href="cart.html" class="bottom-nav-item flex flex-col items-center gap-1 text-gray-400 relative">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">السلة</span>
-                        <span class="absolute -top-1 -right-1 bg-primary-500 text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
-                    </a>
-                    <a href="faq.html" class="bottom-nav-item active flex flex-col items-center gap-1">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">الأسئلة</span>
-                    </a>
-                </div>
-            </div>
         </div>
+    </div>
+
+    <!-- Fixed Mobile Bottom Navigation -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md bg-white/90 backdrop-blur-2xl z-50 rounded-[2.5rem] shadow-premium border border-white/50 flex justify-around items-center p-3 md:hidden">
+        <a href="index.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">الرئيسية</span>
+        </a>
+        <a href="products.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">المنتجات</span>
+        </a>
+        <a href="cart.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90 relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="absolute top-2 right-2 bg-accent text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+            </div>
+            <span class="text-[10px] font-bold">السلة</span>
+        </a>
+        <button id="mobile-menu-trigger" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">القائمة</span>
+        </button>
     </div>
 
     <main class="pt-48 pb-32">
@@ -276,32 +289,32 @@
                 </p>
             </div>
 
-            <div class="grid gap-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid gap-8" data-aos="fade-up" data-aos-delay="100">
                 <!-- FAQ Item 1 -->
-                <div class="faq-item group bg-white rounded-[40px] border border-gray-100 transition-all duration-700 hover:border-primary-100">
+                <div class="faq-item group bg-white/60 backdrop-blur-xl rounded-[40px] border border-white/50 transition-all duration-700 hover:border-primary-200 shadow-soft">
                     <button class="faq-toggle w-full p-8 md:p-10 text-right flex justify-between items-center outline-none">
                         <span class="text-xl md:text-2xl font-black text-secondary group-hover:text-primary-500 transition-colors duration-500">هل منتجاتكم أصلية ومستوردة؟</span>
-                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft">
+                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft group-hover:rotate-12">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                     </button>
                     <div class="faq-answer px-8 md:px-10">
-                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-gray-50 pt-8">
+                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-primary-50 pt-8 pb-8">
                             نعم، جميع منتجاتنا أصلية 100% ويتم استيرادها مباشرة من شركة Puritan's Pride في الولايات المتحدة الأمريكية. نحن نضمن أعلى معايير الجودة والتخزين لضمان وصول المنتج إليك في أفضل حالة صحية ممكنة.
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="faq-item group bg-white rounded-[40px] border border-gray-100 transition-all duration-700 hover:border-primary-100">
+                <div class="faq-item group bg-white/60 backdrop-blur-xl rounded-[40px] border border-white/50 transition-all duration-700 hover:border-primary-200 shadow-soft">
                     <button class="faq-toggle w-full p-8 md:p-10 text-right flex justify-between items-center outline-none">
                         <span class="text-xl md:text-2xl font-black text-secondary group-hover:text-primary-500 transition-colors duration-500">كم يستغرق الشحن داخل مصر؟</span>
-                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft">
+                        <div class="faq-icon w-12 h-12 rounded-full bg-primary-50 flex items-center justify-center text-primary-500 transition-all duration-700 shadow-soft group-hover:rotate-12">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                     </button>
                     <div class="faq-answer px-8 md:px-10">
-                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-gray-50 pt-8">
+                        <div class="text-gray-500 leading-relaxed text-lg md:text-xl border-t border-primary-50 pt-8 pb-8">
                             يستغرق الشحن داخل القاهرة والجيزة من 24 إلى 48 ساعة عمل. أما باقي المحافظات فتستغرق من 3 إلى 5 أيام عمل بحد أقصى. يتم التواصل معكم من قبل فريق الشحن قبل التسليم للتنسيق وضمان راحتكم.
                         </div>
                     </div>
@@ -475,20 +488,34 @@
 
         // Mobile Menu Toggle
         const openMenu = document.getElementById('mobile-menu-btn');
-        const closeMenu = document.getElementById('close-menu');
+        const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
+        const closeMenu = document.getElementById('close-menu-btn') || document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuContent = document.getElementById('mobile-menu-content');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
 
-        if (openMenu && closeMenu && mobileMenu) {
-            openMenu.addEventListener('click', () => {
-                mobileMenu.classList.remove('translate-x-full');
+        function toggleMenu(show) {
+            if (show) {
+                mobileMenu.classList.remove('invisible');
+                setTimeout(() => {
+                    mobileMenuContent.classList.remove('translate-x-full');
+                    mobileMenuBackdrop.classList.add('opacity-100');
+                }, 10);
                 document.body.style.overflow = 'hidden';
-            });
-
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.add('translate-x-full');
+            } else {
+                mobileMenuContent.classList.add('translate-x-full');
+                mobileMenuBackdrop.classList.remove('opacity-100');
+                setTimeout(() => {
+                    mobileMenu.classList.add('invisible');
+                }, 500);
                 document.body.style.overflow = 'auto';
-            });
+            }
         }
+
+        if (openMenu) openMenu.addEventListener('click', () => toggleMenu(true));
+        if (mobileMenuTrigger) mobileMenuTrigger.addEventListener('click', () => toggleMenu(true));
+        if (closeMenu) closeMenu.addEventListener('click', () => toggleMenu(false));
+        if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', () => toggleMenu(false));
 
         // SweetAlert2 Configuration
         const Toast = Swal.mixin({

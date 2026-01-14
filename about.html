@@ -91,7 +91,12 @@
         }
     </style>
 </head>
-<body class="text-secondary selection:bg-primary-100 selection:text-primary-900">
+<body class="text-secondary selection:bg-primary-100 selection:text-primary-900 relative overflow-x-hidden">
+
+    <!-- Artistic Background Blobs -->
+    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 left-0 -translate-x-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-100/10 rounded-full blur-[150px] pointer-events-none"></div>
 
     <!-- Preloader -->
     <div id="loader" class="fixed inset-0 z-[100] bg-surface flex items-center justify-center transition-opacity duration-700">
@@ -120,6 +125,7 @@
         <div class="hidden md:flex items-center gap-10">
             <a href="index.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">الرئيسية</a>
             <a href="products.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">المنتجات</a>
+            <a href="services.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">الخدمات</a>
             <a href="about.html" class="text-sm font-semibold text-primary-500 relative after:absolute after:bottom-[-4px] after:right-0 after:w-full after:h-[2px] after:bg-primary-500">عن الشركة</a>
             <a href="contact.html" class="text-sm font-semibold text-gray-500 hover:text-primary-500 transition-colors">تواصل معنا</a>
         </div>
@@ -162,6 +168,7 @@
                 <nav class="space-y-6">
                     <a href="index.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">الرئيسية</a>
                     <a href="products.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">المنتجات</a>
+                    <a href="services.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">الخدمات</a>
                     <a href="about.html" class="menu-item block text-3xl font-bold text-primary-500">عن الشركة</a>
                     <a href="contact.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">تواصل معنا</a>
                     <a href="faq.html" class="menu-item block text-3xl font-bold text-secondary hover:text-primary-500 transition-colors">الأسئلة الشائعة</a>
@@ -179,28 +186,34 @@
                 </div>
             </div>
 
-            <!-- Bottom Navigation for Mobile Menu -->
-            <div class="p-8 border-t border-gray-100 bg-gray-50/50">
-                <div class="flex justify-around items-center">
-                    <a href="index.html" class="bottom-nav-item flex flex-col items-center gap-1 text-gray-400">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">الرئيسية</span>
-                    </a>
-                    <a href="products.html" class="bottom-nav-item flex flex-col items-center gap-1 text-gray-400">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">المتجر</span>
-                    </a>
-                    <a href="cart.html" class="bottom-nav-item flex flex-col items-center gap-1 text-gray-400 relative">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">السلة</span>
-                        <span class="absolute -top-1 -right-1 bg-primary-500 text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
-                    </a>
-                    <a href="about.html" class="bottom-nav-item active flex flex-col items-center gap-1">
-                        <svg class="w-6 h-6 nav-icon transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span class="text-[10px] font-bold uppercase tracking-tighter">عننا</span>
-                    </a>
-                </div>
+    <!-- Mobile Bottom Navigation (Refined) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md bg-white/90 backdrop-blur-2xl z-50 rounded-[2.5rem] shadow-premium border border-white/50 flex justify-around items-center p-3 md:hidden">
+        <a href="index.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             </div>
+            <span class="text-[10px] font-bold">الرئيسية</span>
+        </a>
+        <a href="products.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">المنتجات</span>
+        </a>
+        <a href="cart.html" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90 relative">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="absolute top-2 right-2 bg-accent text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+            </div>
+            <span class="text-[10px] font-bold">السلة</span>
+        </a>
+        <button id="mobile-menu-trigger" class="bottom-nav-link group flex flex-col items-center gap-1.5 transition-all duration-300 text-gray-400">
+            <div class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-gray-50 transition-all duration-300 group-active:scale-90">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </div>
+            <span class="text-[10px] font-bold">القائمة</span>
+        </button>
+    </div>
         </div>
     </div>
 
@@ -228,12 +241,12 @@
                         نحن في Puritan's Pride Egypt نؤمن أن الصحة هي أغلى ما يملكه الإنسان، لذا نكرس جهودنا لتوفير أفضل المكملات الغذائية العالمية لعملائنا في مصر منذ انطلاقنا.
                     </p>
                     <div class="grid grid-cols-2 gap-8">
-                        <div class="p-8 bg-white rounded-[32px] shadow-soft border border-primary-50">
-                            <div class="text-4xl font-black text-primary-500 mb-2">100%</div>
+                        <div class="p-8 bg-white/60 backdrop-blur-xl rounded-[32px] shadow-soft border border-white/50 group hover:border-primary-200 transition-all duration-500 hover:-translate-y-2">
+                            <div class="text-4xl font-black text-primary-500 mb-2 group-hover:scale-110 transition-transform duration-500 origin-right">100%</div>
                             <div class="text-sm font-bold text-secondary uppercase tracking-widest">منتجات أصلية</div>
                         </div>
-                        <div class="p-8 bg-white rounded-[32px] shadow-soft border border-primary-50">
-                            <div class="text-4xl font-black text-accent mb-2">+50</div>
+                        <div class="p-8 bg-white/60 backdrop-blur-xl rounded-[32px] shadow-soft border border-white/50 group hover:border-accent/20 transition-all duration-500 hover:-translate-y-2">
+                            <div class="text-4xl font-black text-accent mb-2 group-hover:scale-110 transition-transform duration-500 origin-right">+50</div>
                             <div class="text-sm font-bold text-secondary uppercase tracking-widest">سنة خبرة</div>
                         </div>
                     </div>
@@ -248,20 +261,22 @@
             </section>
 
             <!-- Vision & Mission -->
-            <section class="grid md:grid-cols-2 gap-12 mb-32">
-                <div class="p-12 bg-primary-500 rounded-[48px] text-white" data-aos="fade-up">
-                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8">
+            <section class="grid md:grid-cols-2 gap-12 mb-32 relative">
+                <div class="p-12 bg-primary-500 rounded-[48px] text-white shadow-premium group hover:-translate-y-2 transition-all duration-500 relative overflow-hidden" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform duration-500">
                         <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                     </div>
                     <h2 class="text-3xl font-bold mb-6">رؤيتنا</h2>
-                    <p class="text-primary-100 text-lg leading-relaxed">أن نكون الوجهة الأولى والموثوقة لكل من يبحث عن تحسين جودة حياته من خلال منتجات صحية أصلية وعالية الجودة في مصر والشرق الأوسط، متمسكين بأعلى معايير النقاء العالمية.</p>
+                    <p class="text-primary-100 text-lg leading-relaxed relative z-10">أن نكون الوجهة الأولى والموثوقة لكل من يبحث عن تحسين جودة حياته من خلال منتجات صحية أصلية وعالية الجودة في مصر والشرق الأوسط، متمسكين بأعلى معايير النقاء العالمية.</p>
                 </div>
-                <div class="p-12 bg-white rounded-[48px] shadow-soft border border-primary-50" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mb-8 text-primary-500">
+                <div class="p-12 bg-white/60 backdrop-blur-xl rounded-[48px] shadow-soft border border-white/50 group hover:-translate-y-2 transition-all duration-500 relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-primary-500/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mb-8 text-primary-500 group-hover:rotate-12 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <h2 class="text-3xl font-bold mb-6 text-secondary">رسالتنا</h2>
-                    <p class="text-gray-500 text-lg leading-relaxed">توفير تشكيلة واسعة من الفيتامينات والمكملات الغذائية المستوردة بأسعار تنافسية، مع ضمان الأصالة والجودة المطلقة وتقديم تجربة تسوق استثنائية مدعومة بخبرات متخصصة.</p>
+                    <p class="text-gray-500 text-lg leading-relaxed relative z-10">توفير تشكيلة واسعة من الفيتامينات والمكملات الغذائية المستوردة بأسعار تنافسية، مع ضمان الأصالة والجودة المطلقة وتقديم تجربة تسوق استثنائية مدعومة بخبرات متخصصة.</p>
                 </div>
             </section>
 
@@ -362,6 +377,7 @@
 
         // Mobile Menu Toggle
         const openMenu = document.getElementById('mobile-menu-btn');
+        const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
         const closeMenu = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuContent = document.getElementById('mobile-menu-content');
@@ -387,17 +403,10 @@
             }
         }
 
-        if (openMenu && closeMenu && mobileMenu) {
-            openMenu.addEventListener('click', () => toggleMenu(true));
-            closeMenu.addEventListener('click', () => toggleMenu(false));
-            mobileMenuBackdrop.addEventListener('click', () => toggleMenu(false));
-
-            // Close menu on link click
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => toggleMenu(false));
-            });
-        }
+        if (openMenu) openMenu.addEventListener('click', () => toggleMenu(true));
+        if (mobileMenuTrigger) mobileMenuTrigger.addEventListener('click', () => toggleMenu(true));
+        if (closeMenu) closeMenu.addEventListener('click', () => toggleMenu(false));
+        if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener('click', () => toggleMenu(false));
 
         // SweetAlert2 Configuration
         const Toast = Swal.mixin({
